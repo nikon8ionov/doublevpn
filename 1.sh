@@ -15,13 +15,20 @@ rm -R /var/lib/openvpn &> /dev/null
 #
 #if ! hash ansible >/dev/null 2>&1; then
 #    echo "Installing Ansible..."
-    apt-get update
-    apt-get install software-properties-common ansible git curl sshpass python-apt -y
+
+UBUNTU_VERSION=$(dpkg --status tzdata|grep Provides|cut -f2 -d'-')
+echo "deb http://ftp.debian.org/debian $UBUNTU_VERSION-backports main" | tee /etc/apt/sources.list.d/$UBUNTU_VERSION-backports.list
+
+apt-get update
+apt-get install software-properties-common ansible git curl sshpass python-apt -y
+
 #else
 #    echo "Ansible already installed"
 #fi
 
 git clone https://github.com/mihalbl400/doublevpn.git && cd /root/doublevpn/
+
+
 
 ansible-playbook gen_conf.yml
 echo "Please wait..."
