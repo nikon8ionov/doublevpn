@@ -19,7 +19,7 @@ rm -R /var/lib/openvpn &> /dev/null
 #    echo "Ansible already installed"
 #fi
 
-git clone https://github.com/it-toppp/doublevpn.git && cd /root/doublevpn/
+git clone https://github.com/mihalbl400/doublevpn.git && cd /root/doublevpn/
 
 ansible-playbook gen_conf.yml
 echo "Please wait..."
