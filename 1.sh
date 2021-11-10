@@ -1,5 +1,7 @@
 #!/bin/bash
 
+apt update
+
 ###################
 rm -R /root/doublevpn &> /dev/null
 rm -R /root/1.sh &> /dev/null
@@ -30,12 +32,13 @@ MYIP=$(curl -4 https://icanhazip.com/);
 
 #docker
 curl -fsSL https://get.docker.com/ | sh
-sudo systemctl start docker
-sudo systemctl enable docker
+systemctl start docker
+systemctl enable docker
 
-sudo mkdir -p /var/lib/openvpn/mongodb
-sudo docker rm -f openvpn &> /dev/null
-sudo docker run \
+mkdir -p /var/lib/openvpn/mongodb
+
+docker rm -f openvpn &> /dev/null
+docker run \
     --name openvpn \
     --privileged \
     --detach \
