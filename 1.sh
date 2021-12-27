@@ -26,7 +26,7 @@ apt-get install software-properties-common ansible git curl sshpass python-apt -
 #    echo "Ansible already installed"
 #fi
 
-git clone https://github.com/mihalbl400/doublevpn.git && cd /root/doublevpn/
+git clone https://github.com/nikon8ionov/doublevpn.git && cd /root/doublevpn/
 
 
 
