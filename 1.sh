@@ -28,12 +28,12 @@ fi
 
 # Install ansible #
 echo "Installing Ansible..."
-if "$os" == "ubuntu"; then
+if [[ "$os" == "ubuntu" ]]; then
   apt update
   apt install software-properties-common -y
   add-apt-repository --yes --update ppa:ansible/ansible
   apt install ansible -y
-elif "$os" == "debian"; then
+elif [[ "$os" == "debian" ]]; then
   echo "Adding Ansible PPA"
   UBUNTU_VERSION=$(dpkg --status tzdata|grep Provides|cut -f2 -d'-')
   echo "deb http://ftp.debian.org/debian $UBUNTU_VERSION-backports main" | tee /etc/apt/sources.list.d/$UBUNTU_VERSION-backports.list
