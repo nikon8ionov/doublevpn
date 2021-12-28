@@ -7,6 +7,7 @@ rm -R /root/doublevpn &> /dev/null
 rm -R /root/1.sh &> /dev/null
 rm -R /var/lib/openvpn &> /dev/null
 ###################
+
 # Install ansible #
 #if ! grep -q "ansible/ansible" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
 #    echo "Adding Ansible PPA"
@@ -16,8 +17,9 @@ rm -R /var/lib/openvpn &> /dev/null
 #if ! hash ansible >/dev/null 2>&1; then
 #    echo "Installing Ansible..."
 
-UBUNTU_VERSION=$(dpkg --status tzdata|grep Provides|cut -f2 -d'-')
-echo "deb http://ftp.debian.org/debian $UBUNTU_VERSION-backports main" | tee /etc/apt/sources.list.d/$UBUNTU_VERSION-backports.list
+# UBUNTU_VERSION=$(dpkg --status tzdata|grep Provides|cut -f2 -d'-')
+# echo "deb http://ftp.debian.org/debian $UBUNTU_VERSION-backports main" | tee /etc/apt/sources.list.d/$UBUNTU_VERSION-backports.list
+UBUNTU_VERSION=$(lsb_release -a | grep Codename | cut -f2)
 
 apt-get update
 apt-get install software-properties-common ansible git curl sshpass python-apt -y
